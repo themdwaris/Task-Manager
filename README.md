@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Task Management System
 
-## Getting Started
+A full-featured Task Management Web Application built with **Next.js**, **MongoDB**, and **Tailwind CSS**. It includes user authentication, task assignment, filters, real-time notifications, and a responsive UI.
 
-First, run the development server:
+## 🌟 Features
+
+* User Authentication (Login/Register)
+* Create, Read, Update, and Delete (CRUD) tasks
+* Assign tasks to other users
+* Task search filter by **title** and **description**
+* Filter tasks by status and priority
+* Real-time task notifications for assigned users
+* Responsive and intuitive UI
+
+## 🛠 Tech Stack
+
+* **Frontend:** Next.js (App Router), Tailwind CSS
+* **Backend:** Next.js API routes
+* **Database:** MongoDB with Mongoose
+* **State Management:** React Context API
+* **HTTP Requests:** Axios
+* **Notifications:** Real-time updates using polling (custom logic)
+
+## 🔍 Task Filters
+
+* **Search Filter:**
+
+  * Search tasks by `title` or `description` (case-insensitive)
+* **Dropdown Filters:**
+
+  * Filter by `status`: Pending, In Progress, Completed
+  * Filter by `priority`: Low, Medium, High
+  * Filter by Due Date
+
+## 🔔 Notifications
+
+* When a task is **created** or **updated** with an assignee, that user receives a notification
+* Notifications show in real-time (polling every few seconds)
+* Automatically disappear after 3 seconds
+* No page refresh needed to view them
+
+## 📦 API Endpoints
+
+### Tasks
+
+* `GET /api/tasks` – Get all tasks (optionally filtered)
+* `POST /api/tasks` – Create a new task
+* `PUT /api/tasks/:taskId` – Update task by ID
+* `DELETE /api/tasks/:taskId` – Delete task
+
+### Notifications
+
+* `POST /api/notification` – Create a notification (on assign)
+* `GET /api/notification?userId=...` – Get latest unread notification for user
+* `PUT /api/notification/:id` – Mark a notification as read
+
+### Users
+
+* `GET /api/currentUser` – Get currently logged in user
+* `GET /api/users` – Get list of all users
+
+## ▶️ How to Run the Project
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/yourusername/task-management-app.git
+cd task-management-app
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Create `.env.local` File
+
+```env
+MONGODB_URI=mongodb+srv://your-mongodb-url
+JWT_SECRET=your-secret-key
+```
+
+### 4. Run the Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the app.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+✅ Built with ❤️ using Next.js App Router, Tailwind CSS, MongoDB, and a clean developer-friendly architecture.
