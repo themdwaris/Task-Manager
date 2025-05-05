@@ -105,7 +105,7 @@ const App = () => {
 
           <label htmlFor="date" className="relative flex flex-col gap-1.5 ">
             {dueDate?.length===0 && (
-              <span className="sm:hidden absolute top-1.5 left-2">
+              <span className="sm:hidden absolute top-1.5 left-4">
                 Select Date
               </span>
             )}
