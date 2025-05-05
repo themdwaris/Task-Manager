@@ -9,7 +9,6 @@ import { RiAddLargeLine } from "react-icons/ri";
 import Loader2 from "@/components/Loader2";
 import Notify from "@/components/Notify";
 
-
 const App = () => {
   const {
     getCurrentUser,
@@ -18,7 +17,7 @@ const App = () => {
     assignedTasks,
     createdTasks,
     laoding,
-    getAllTasks
+    getAllTasks,
   } = useUserTask();
 
   const [allTasks, setAllTasks] = useState([]);
@@ -50,9 +49,8 @@ const App = () => {
     }
   }, [createdTasks, assignedTasks]);
 
-
   useEffect(() => {
-    getAllTasks()
+    getAllTasks();
     getCurrentUser();
   }, []);
 
@@ -106,13 +104,14 @@ const App = () => {
           />
 
           <label htmlFor="date" className="relative flex flex-col gap-1.5 ">
-            <span className="sm:hidden absolute top-1.5 left-2">
-              Select Date
-            </span>
+            {dueDate?.length===0 && (
+              <span className="sm:hidden absolute top-1.5 left-2">
+                Select Date
+              </span>
+            )}
             <input
               type="date"
               id="date"
-              
               value={dueDate}
               onChange={(e) => setDueDate(e.target.value)}
               className="px-4 py-2 rounded-lg bg-white/10 text-white"
@@ -190,7 +189,7 @@ const App = () => {
         )}
       </div>
       <div className="absolute top-0 left-5/12 ">
-        <Notify/>
+        <Notify />
       </div>
     </div>
   );

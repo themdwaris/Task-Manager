@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useUserTask } from "@/context/UserTaskContext";
 
-
 const Notify = () => {
   const { user, notify } = useUserTask();
   const [message, setMessage] = useState("");
@@ -15,9 +14,12 @@ const Notify = () => {
         const latest = res.data[0];
         if (!latest.isRead) {
           setMessage(latest.message);
-          setTimeout(() => {
-            setMessage("");
-          }, 5000);
+          
+          // Auto-hide after 3 seconds and mark as read
+          setTimeout(async () => {
+            setMessage(""); // hide message
+            await axios.put(`/api/notification/${latest._id}`); // mark as read
+          }, 3000);
         }
       }
     } catch (err) {
