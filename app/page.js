@@ -16,7 +16,7 @@ const App = () => {
     setOpenForm,
     assignedTasks,
     createdTasks,
-    laoding,
+    loading,
     getAllTasks,
   } = useUserTask();
 
@@ -170,7 +170,7 @@ const App = () => {
       </div>
       <div className="my-8 px-5 w-full">
         <h1 className="text-xl mb-3">All Tasks</h1>
-        {laoding && filteredTasks.length === 0 && allTasks.length === 0 ? (
+        {loading && filteredTasks.length === 0 ? (
           <div className="flex items-center justify-center h-full">
             <Loader2 />
           </div>
